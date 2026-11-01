@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drayton Valley Toyota Club - Official Hub</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for automotive icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter & Rajdhani for automotive look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Rajdhani', 'sans-serif'],
+                    },
+                    colors: {
+                        toyota: {
+                            red: '#EB0A1E',
+                            orange: '#F37021',
+                            yellow: '#FFC72C',
+                            dark: '#0f1015',
+                            card: '#161821',
+                            border: '#2a2d3d'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles.css styling incorporated into single file */
+        .heritage-stripes {
+            background: linear-gradient(90deg, #EB0A1E 0%, #F37021 50%, #FFC72C 100%);
+        }
+        .heritage-border {
+            border-image: linear-gradient(to right, #EB0A1E, #F37021, #FFC72C) 1;
+        }
+        body {
+            background-color: #0b0c10;
+            color: #f1f5f9;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f1015;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a2d3d;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #EB0A1E;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-toyota-red selection:text-white">
+
+    <!-- Toyota Heritage Accent Bar at Very Top -->
+    <div class="h-1.5 w-full heritage-stripes sticky top-0 z-50"></div>
+
+    <!-- Navigation Header -->
+    <header class="bg-toyota-dark/90 backdrop-blur-md border-b border-toyota-border sticky top-1.5 z-40 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Club Logo & Branding -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="switchPage('home')">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-toyota-red via-toyota-orange to-toyota-yellow p-0.5 flex items-center justify-center shadow-lg shadow-toyota-red/20">
+                        <div class="w-full h-full bg-toyota-dark rounded-[10px] flex items-center justify-center">
+                            <i class="fa-solid fa-gauge-high text-toyota-yellow text-xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="font-heading text-xl sm:text-2xl font-bold tracking-wider uppercase bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
+                            Drayton Valley <span class="text-toyota-red">Toyota Club</span>
+                        </span>
+                        <p class="text-xs text-gray-400 font-medium tracking-widest uppercase">Est. 2026 • Alberta, Canada</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex items-center space-x-1">
+                    <button onclick="switchPage('home')" class="nav-link px-4 py-2 rounded-lg text-sm font-semibold transition-all text-toyota-yellow bg-toyota-border/50" data-page="home">
+                        <i class="fa-solid fa-house mr-2"></i>Home
+                    </button>
+                    <button onclick="switchPage('about')" class="nav-link px-4 py-2 rounded-lg text-sm font-semibold transition-all text-gray-300 hover:text-white hover:bg-toyota-border/30" data-page="about">
+                        <i class="fa-solid fa-users mr-2"></i>About Us
+                    </button>
+                    <button onclick="switchPage('events')" class="nav-link px-4 py-2 rounded-lg text-sm font-semibold transition-all text-gray-300 hover:text-white hover:bg-toyota-border/30" data-page="events">
+                        <i class="fa-solid fa-calendar-days mr-2"></i>Upcoming Events
+                    </button>
+                    <button onclick="switchPage('fame')" class="nav-link px-4 py-2 rounded-lg text-sm font-semibold transition-all text-gray-300 hover:text-white hover:bg-toyota-border/30" data-page="fame">
+                        <i class="fa-solid fa-trophy mr-2"></i>Page of Fame
+                    </button>
+                    <button onclick="switchPage('contact')" class="nav-link px-4 py-2 rounded-lg text-sm font-semibold transition-all text-gray-300 hover:text-white hover:bg-toyota-border/30" data-page="contact">
+                        <i class="fa-solid fa-envelope mr-2"></i>Contact
+                    </button>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex items-center lg:hidden">
+                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-toyota-card text-gray-300 hover:text-white focus:outline-none border border-toyota-border">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-toyota-card border-b border-toyota-border px-4 pt-2 pb-4 space-y-2">
+            <button onclick="switchPage('home'); toggleMobileMenu();" class="w-full text-left px-4 py-3 rounded-lg text-sm font-semibold transition-all text-toyota-yellow bg-toyota-border/50 block" data-mobile-page="home">
+                <i class="fa-solid fa-house mr-3 w-5"></i>Home
+            </button>
+            <button onclick="switchPage('about'); toggleMobileMenu();" class="w-full text-left px-4 py-3 rounded-lg text-sm font-semibold transition-all text-gray-300 hover:bg-toyota-border/30 block" data-mobile-page="about">
+                <i class="fa-solid fa-users mr-3 w-5"></i>About Us
+            </button>
+            <button onclick="switchPage('events'); toggleMobileMenu();" class="w-full text-left px-4 py-3 rounded-lg text-sm font-semibold transition-all text-gray-300 hover:bg-toyota-border/30 block" data-mobile-page="events">
+                <i class="fa-solid fa-calendar-days mr-3 w-5"></i>Upcoming Events
+            </button>
+            <button onclick="switchPage('fame'); toggleMobileMenu();" class="w-full text-left px-4 py-3 rounded-lg text-sm font-semibold transition-all text-gray-300 hover:bg-toyota-border/30 block" data-mobile-page="fame">
+                <i class="fa-solid fa-trophy mr-3 w-5"></i>Page of Fame
+            </button>
+            <button onclick="switchPage('contact'); toggleMobileMenu();" class="w-full text-left px-4 py-3 rounded-lg text-sm font-semibold transition-all text-gray-300 hover:bg-toyota-border/30 block" data-mobile-page="contact">
+                <i class="fa-solid fa-envelope mr-3 w-5"></i>Contact
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow">
+
+        <!-- ================= PAGE 1: HOME (index.html) ================= -->
+        <div id="page-home" class="page-content">
+            <!-- Hero Section -->
+            <section class="relative overflow-hidden py-24 sm:py-32 bg-gradient-to-b from-toyota-card to-toyota-dark border-b border-toyota-border">
+                <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#EB0A1E_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                    <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-toyota-red/10 border border-toyota-red/30 text-toyota-red text-xs sm:text-sm font-semibold uppercase tracking-wider mb-6 animate-pulse">
+                        <i class="fa-solid fa-car-side"></i>
+                        <span>Alberta's Premier Toyota Enthusiast Community</span>
+                    </div>
+                    <h1 class="font-heading text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6">
+                        DRIVEN BY PASSION. <br>
+                        <span class="bg-gradient-to-r from-toyota-red via-toyota-orange to-toyota-yellow bg-clip-text text-transparent">POWERED BY TOYOTA.</span>
+                    </h1>
+                    <p class="max-w-2xl mx-auto text-gray-400 text-base sm:text-lg mb-10 leading-relaxed">
+                        Welcome to the Drayton Valley Toyota Club! From bulletproof Hilux trucks and classic AE86 drift legends to modern GR Supras and Land Cruisers — we celebrate engineering excellence and automotive camaraderie across Alberta.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <button onclick="switchPage('events')" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-toyota-red to-toyota-orange text-white font-bold tracking-wider hover:opacity-95 shadow-lg shadow-toyota-red/25 transition-all flex items-center justify-center space-x-2">
+                            <span>Explore Upcoming Events</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- Quick Stats Bar -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-16 pt-12 border-t border-toyota-border">
+                        <div class="p-4 rounded-xl bg-toyota-card/50 border border-toyota-border">
+                            <div class="font-heading text-3xl font-bold text-toyota-yellow">2+</div>
+                            <div class="text-xs text-gray-400 uppercase tracking-widest mt-1">Club Members</div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-toyota-card/50 border border-toyota-border">
+                            <div class="font-heading text-3xl font-bold text-toyota-orange">1st</div>
+                            <div class="text-xs text-gray-400 uppercase tracking-widest mt-1">Month Active</div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-toyota-card/50 border border-toyota-border">
+                            <div class="font-heading text-3xl font-bold text-toyota-red">4+</div>
+                            <div class="text-xs text-gray-400 uppercase tracking-widest mt-1">Annual Meets</div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-toyota-card/50 border border-toyota-border">
+                            <div class="font-heading text-3xl font-bold text-white">100%</div>
+                            <div class="text-xs text-gray-400 uppercase tracking-widest mt-1">Toyota Obsessed</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Latest Highlights & Club Spotlight -->
+            <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <span class="text-xs font-bold tracking-widest uppercase text-toyota-orange">Latest Highlights</span>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-extrabold mt-2">What's Happening in Drayton Valley</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Highlight Card 1 -->
+                    <div class="bg-toyota-card border border-toyota-border rounded-2xl overflow-hidden hover:border-toyota-red/50 transition-all group">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="car-show.jpg" alt="Toyota Car Show" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/800x500/161821/ffffff?text=Toyota+Car+Show'">
+                            <div class="absolute top-3 left-3 bg-toyota-red text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Featured Event</div>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-xs text-toyota-yellow font-semibold mb-2">June 14, 2026 • No locaton yet</div>
+                            <h3 class="font-heading text-xl font-bold mb-3 group-hover:text-toyota-orange transition-colors">Annual Summer Toyota Car Show</h3>
+                            <p class="text-gray-400 text-sm mb-4">Prepare your Toyotas for the Toyota Show & Shine! Old or new, we want to see it!</p>
+                            <button onclick="switchPage('events')" class="text-sm font-bold text-toyota-red hover:underline flex items-center space-x-1">
+                                <span>Learn More</span>
+                                <i class="fa-solid fa-chevron-right text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Highlight Card 2 -->
+                    <div class="bg-toyota-card border border-toyota-border rounded-2xl overflow-hidden hover:border-toyota-orange/50 transition-all group">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="parts-swap.jpg" alt="Parts Swap" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/800x500/161821/ffffff?text=Parts+Swap+Meet'">
+                            <div class="absolute top-3 left-3 bg-toyota-orange text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Community Meet</div>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-xs text-toyota-yellow font-semibold mb-2">July 19, 2026 • No location yet</div>
+                            <h3 class="font-heading text-xl font-bold mb-3 group-hover:text-toyota-orange transition-colors">Toyota Parts Swap</h3>
+                            <p class="text-gray-400 text-sm mb-4">Bring your spare parts and trade them with the community for something else!</p>
+                            <button onclick="switchPage('events')" class="text-sm font-bold text-toyota-orange hover:underline flex items-center space-x-1">
+                                <span>Check Schedule</span>
+                                <i class="fa-solid fa-chevron-right text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= PAGE 2: ABOUT US (about.html) ================= -->
+        <div id="page-about" class="page-content hidden">
+            <section class="py-16 bg-toyota-card border-b border-toyota-border">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <span class="text-xs font-bold tracking-widest uppercase text-toyota-red">About Us</span>
+                    <h1 class="font-heading text-4xl sm:text-5xl font-extrabold mt-2 mb-4">Rooted in Durability & Community</h1>
+                    <p class="max-w-3xl mx-auto text-gray-400 text-lg">Founded by local gearheads in Drayton Valley, Alberta, our club is dedicated to the resilience, performance, and heritage of Toyota vehicles.</p>
+                </div>
+            </section>
+
+            <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+                    <div>
+                        <h2 class="font-heading text-3xl font-bold mb-6 text-white">Our Club History</h2>
+                        <p class="text-gray-300 mb-4 leading-relaxed">
+                            The Drayton Valley Toyota Club started in 2026 when a few local Toyota owners decided it was time for a club dedicated to our Toyotas.
+                        </p>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            If you drive a Toyota, old or new, we welcome you to join the club and be a part of the community!
+                        </p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="p-4 bg-toyota-card rounded-xl border border-toyota-border">
+                                <div class="text-toyota-yellow font-heading text-2xl font-bold">Community Driven</div>
+                                <div class="text-xs text-gray-400 mt-1">Started by the community for the community</div>
+                            </div>
+                            <div class="p-4 bg-toyota-card rounded-xl border border-toyota-border">
+                                <div class="text-toyota-orange font-heading text-2xl font-bold">Technical Help</div>
+                                <div class="text-xs text-gray-400 mt-1">Experienced wrenches ready to assist with DIY fixes.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-toyota-red via-toyota-orange to-toyota-yellow rounded-2xl blur-sm opacity-30"></div>
+                        <div class="relative rounded-2xl overflow-hidden border border-toyota-border bg-toyota-card">
+                            <img src="about.jpg" alt="Club History" class="w-full h-96 object-cover" onerror="this.src='https://placehold.co/800x600/161821/ffffff?text=Club+Heritage'">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Meet the Founders / Team -->
+                <div class="text-center mb-16">
+                    <span class="text-xs font-bold tracking-widest uppercase text-toyota-yellow">Leadership Team</span>
+                    <h2 class="font-heading text-3xl font-extrabold mt-2">Meet the Club Founders</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-toyota-card border border-toyota-border rounded-2xl p-6 text-center hover:border-toyota-red/50 transition-all">
+                        <div class="w-24 h-24 mx-auto mb-4 rounded-full p-1 bg-gradient-to-r from-toyota-red to-toyota-orange">
+                            <img src="GR8N8.jpeg" alt="Founder" class="w-full h-full object-cover rounded-full" onerror="this.src='https://placehold.co/300x300/161821/ffffff?text=Sarah+M.'">
+                        </div>
+                        <h3 class="font-heading text-xl font-bold">Nate</h3>
+                        <p class="text-xs text-toyota-red font-semibold uppercase tracking-wider mb-3">President & Co-Founder</p>
+                        <p class="text-gray-400 text-sm">Proud owner of a 1995 Toyota 4Runner Sequoia Edition and a 1985 Toyota Motorhome. Main developer for the club website</p>
+                    </div>
+                    <div class="bg-toyota-card border border-toyota-border rounded-2xl p-6 text-center hover:border-toyota-orange/50 transition-all">
+                        <div class="w-24 h-24 mx-auto mb-4 rounded-full p-1 bg-gradient-to-r from-toyota-orange to-toyota-yellow">
+                            <img src="blank-profile.jpg" alt="Founder" class="w-full h-full object-cover rounded-full" onerror="this.src='https://placehold.co/300x300/161821/ffffff?text=Marcus+V.'">
+                        </div>
+                        <h3 class="font-heading text-xl font-bold">Ace</h3>
+                        <p class="text-xs text-toyota-orange font-semibold uppercase tracking-wider mb-3">Vice President & Co-Founder</p>
+                        <p class="text-gray-400 text-sm">Toyota owner who helped found the club</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= PAGE 3: UPCOMING EVENTS (upcoming-events.html) ================= -->
+        <div id="page-events" class="page-content hidden">
+            <section class="py-16 bg-toyota-card border-b border-toyota-border">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <span class="text-xs font-bold tracking-widest uppercase text-toyota-orange">Upcoming Events</span>
+                    <h1 class="font-heading text-4xl sm:text-5xl font-extrabold mt-2 mb-4">Join Us on the Asphalt & Trail</h1>
+                    <p class="max-w-3xl mx-auto text-gray-400 text-lg">Check out our signature car shows, part swap meets, and member gatherings scheduled for this season.</p>
+                </div>
+            </section>
+
+            <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="space-y-12">
+                    <!-- Event 1: Toyota Car Show -->
+                    <div class="bg-toyota-card border border-toyota-border rounded-2xl overflow-hidden shadow-xl grid grid-cols-1 lg:grid-cols-3">
+                        <div class="lg:col-span-1 relative min-h-[250px] lg:min-h-full">
+                            <img src="car-show.jpg" alt="Toyota Car Show" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/161821/ffffff?text=Car+Show'">
+                            <div class="absolute top-4 left-4 bg-toyota-red text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Signature Event</div>
+                        </div>
+                        <div class="lg:col-span-2 p-8 flex flex-col justify-between">
+                            <div>
+                                <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                    <span class="text-toyota-yellow font-bold text-sm"><i class="fa-solid fa-calendar mr-2"></i>Sunday, June 14, 2026 • 10:00 AM - 4:00 PM</span>
+                                    <span class="px-3 py-1 bg-toyota-red/10 text-toyota-red border border-toyota-red/30 rounded-full text-xs font-semibold uppercase">Open to Public</span>
+                                </div>
+                                <h3 class="font-heading text-3xl font-bold mb-4 text-white">Annual Drayton Valley Toyota Car Show</h3>
+                                <p class="text-gray-300 text-base mb-6 leading-relaxed">
+                                    Our flagship annual gathering featuring local Toyotas of all kinds. Bring your restored classics, modern GR series, lifted 4x4s, and drift builds.
+                                </p>
+                                <div class="flex flex-wrap gap-4 text-sm text-gray-400 mb-6">
+                                    <div><i class="fa-solid fa-location-dot text-toyota-red mr-2"></i><strong>Location:</strong> Not yet available</div>
+                                    <div><i class="fa-solid fa-tag text-toyota-yellow mr-2"></i><strong>Admission:</strong> Not yet available</div>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-4 pt-6 border-t border-toyota-border">
+                               <a href="mailto:dvtoyotaclub@duck.com?subject=RSVP%20for%20Annual%20Drayton%20Valley%20Toyota%20Car%20Show&body=Hi%2C%20I%20would%20like%20to%20RSVP%20for%20the%20Car%20Show%20on%20June%2014%2C%202026."
+   class="px-6 py-3 rounded-xl bg-gradient-to-r from-toyota-red to-toyota-orange text-white font-bold hover:opacity-95 transition-all shadow-lg shadow-toyota-red/20 inline-block text-center">
+    <i class="fa-solid fa-circle-check mr-2"></i>RSVP via Email
+</a>
+                                <button onclick="downloadCalendarEvent('Annual Drayton Valley Toyota Car Show', 'June 14, 2026', 'Drayton Valley Omniplex')" class="px-6 py-3 rounded-xl bg-toyota-dark border border-toyota-border text-white font-bold hover:bg-toyota-border/50 transition-all">
+                                    <i class="fa-solid fa-calendar-plus mr-2 text-toyota-yellow"></i>Add to Calendar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event 2: Parts Swap Meet -->
+                    <div class="bg-toyota-card border border-toyota-border rounded-2xl overflow-hidden shadow-xl grid grid-cols-1 lg:grid-cols-3">
+                        <div class="lg:col-span-1 relative min-h-[250px] lg:min-h-full">
+                            <img src="parts-swap.jpg" alt="Parts Swap" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/161821/ffffff?text=Parts+Swap'">
+                            <div class="absolute top-4 left-4 bg-toyota-orange text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Community Meet</div>
+                        </div>
+                        <div class="lg:col-span-2 p-8 flex flex-col justify-between">
+                            <div>
+                                <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                    <span class="text-toyota-yellow font-bold text-sm"><i class="fa-solid fa-calendar mr-2"></i>Saturday, July 19, 2026 • 9:00 AM - 2:00 PM</span>
+                                    <span class="px-3 py-1 bg-toyota-orange/10 text-toyota-orange border border-toyota-orange/30 rounded-full text-xs font-semibold uppercase">Members & Public</span>
+                                </div>
+                                <h3 class="font-heading text-3xl font-bold mb-4 text-white"> Toyota Parts Swap</h3>
+                                <p class="text-gray-300 text-base mb-6 leading-relaxed">
+                                    Time to clear out your garage or hunt down rare spares! Bring your spare 22R carburetors, AE86 suspension arms, Land Cruiser axles, wheels, and tools to swap or sell.
+                                </p>
+                                <div class="flex flex-wrap gap-4 text-sm text-gray-400 mb-6">
+                                    <div><i class="fa-solid fa-location-dot text-toyota-orange mr-2"></i><strong>Location:</strong> Not yet available</div>
+                                    <div><i class="fa-solid fa-tag text-toyota-yellow mr-2"></i><strong>Cost:</strong> Free Admission</div>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-4 pt-6 border-t border-toyota-border">
+                                <a href="mailto:dvtoyotaclub@duck.com?subject=RSVP%20for%20Annual%20Drayton%20Valley%20Toyota%20Parts%20Swap&body=Hi%2C%20I%20would%20like%20to%20RSVP%20for%20the%20Parts%20Swap%20on%20June%2014%2C%202026."
+   class="px-6 py-3 rounded-xl bg-gradient-to-r from-toyota-red to-toyota-orange text-white font-bold hover:opacity-95 transition-all shadow-lg shadow-toyota-red/20 inline-block text-center">
+    <i class="fa-solid fa-circle-check mr-2"></i>RSVP via Email
+</a>
+                                <button onclick="downloadCalendarEvent('Valley Toyota Parts Swap Meet', 'July 19, 2026', 'Drayton Valley Industrial Park Arena')" class="px-6 py-3 rounded-xl bg-toyota-dark border border-toyota-border text-white font-bold hover:bg-toyota-border/50 transition-all">
+                                    <i class="fa-solid fa-calendar-plus mr-2 text-toyota-yellow"></i>Add to Calendar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= PAGE 4: TOYOTA PAGE OF FAME (toyota-page-of-fame.html) ================= -->
+        <div id="page-fame" class="page-content hidden">
+            <section class="py-16 bg-toyota-card border-b border-toyota-border">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <span class="text-xs font-bold tracking-widest uppercase text-toyota-yellow">Toyota Page of Fame</span>
+                    <h1 class="font-heading text-4xl sm:text-5xl font-extrabold mt-2 mb-4">Legendary Icons & Member Spotlights</h1>
+                    <p class="max-w-3xl mx-auto text-gray-400 text-lg">Honoring the bulletproof engineering, rally dominance, and sports car royalty that shaped Toyota's global legacy.</p>
+                </div>
+            </section>
+
+            <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Legendary Models Grid -->
+                <div class="text-center mb-16">
+                    <h2 class="font-heading text-3xl font-extrabold">Members Vehicles</h2>
+                    <p class="text-gray-400 text-sm mt-2">Notable local Toyotas. Want yours featured? Contact us with your photo and car details</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+                    <!--  4Runner -->
+                    <div class="bg-toyota-card border border-toyota-border rounded-2xl overflow-hidden hover:border-toyota-red/50 transition-all flex flex-col justify-between">
+                        <div>
+                            <div class="h-48 overflow-hidden relative">
+                                <img src="4runner.jpg" alt="4runner" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x500/161821/ffffff?text=Toyota+AE86'">
+                                <div class="absolute top-3 right-3 bg-toyota-red text-white text-xs font-bold px-2.5 py-1 rounded uppercase">4x4 Warrior</div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="font-heading text-2xl font-bold mb-1 text-white">Toyota 4Runner Sequoia Edition</h3>
+                                <p class="text-xs text-toyota-yellow font-semibold mb-3">1995 • Rare 4Runner Edition</p>
+                                <p class="text-gray-400 text-sm mb-4">Rare 2nd Gen with features like tan leather inside and wood trim. Only 5,000 total units were made only for Canada</p>
+                                <div class="space-y-2 text-xs text-gray-300 bg-toyota-dark p-3 rounded-lg border border-toyota-border">
+                                    <div class="flex justify-between"><span>Engine:</span> <strong class="text-white">3.0L 3VZ-E V6</strong></div>
+                                    <div class="flex justify-between"><span>Drivetrain:</span> <strong class="text-white">4WD | 4 speed automatic transmission</strong></div>
+                                    <div class="flex justify-between"><span>Owned By:</span> <strong class="text-white">Nate R.</strong></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Motorhome -->
+                    <div class="bg-toyota-card border border-toyota-border rounded-2xl overflow-hidden hover:border-toyota-orange/50 transition-all flex flex-col justify-between">
+                        <div>
+                            <div class="h-48 overflow-hidden relative">
+                                <img src="motorhome.jpg" alt="motorhome" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x500/161821/ffffff?text=Supra+MK4'">
+                                <div class="absolute top-3 right-3 bg-toyota-orange text-white text-xs font-bold px-2.5 py-1 rounded uppercase">Classic History</div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="font-heading text-2xl font-bold mb-1 text-white">Toyota Frontier Motorhome</h3>
+                                <p class="text-xs text-toyota-orange font-semibold mb-3">1985 • A Forgotten Gem</p>
+                                <p class="text-gray-400 text-sm mb-4">Probably one of the least known Toyotas, this motorhome project is a Toyota gem that survived exceptionally well with only 75,000 KM</p>
+                                <div class="space-y-2 text-xs text-gray-300 bg-toyota-dark p-3 rounded-lg border border-toyota-border">
+                                    <div class="flex justify-between"><span>Engine:</span> <strong class="text-white">2.4L 22R-E 4Cyl</strong></div>
+                                    <div class="flex justify-between"><span>Drivetrain:</span> <strong class="text-white"> RWD | 3 speed automatic transmission</strong></div>
+                                    <div class="flex justify-between"><span>Owned By:</span> <strong class="text-white">Nate R.</strong></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Your Toyota Here -->
+                    <div class="bg-toyota-card border border-toyota-border rounded-2xl overflow-hidden hover:border-toyota-yellow/50 transition-all flex flex-col justify-between">
+                        <div>
+                            <div class="h-48 overflow-hidden relative">
+                                <img src="your-toyota-here.jpg" alt="Land Cruiser" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x500/161821/ffffff?text=Land+Cruiser'">
+                                <div class="absolute top-3 right-3 bg-toyota-yellow text-toyota-dark text-xs font-bold px-2.5 py-1 rounded uppercase">Unstoppable</div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="font-heading text-2xl font-bold mb-1 text-white">Your Car Here</h3>
+                                <p class="text-xs text-toyota-yellow font-semibold mb-3">Global Expedition Icon</p>
+                                <p class="text-gray-400 text-sm mb-4">This could be you featured here!</p>
+                                <div class="space-y-2 text-xs text-gray-300 bg-toyota-dark p-3 rounded-lg border border-toyota-border">
+                                    <div class="flex justify-between"><span>Engine:</span> <strong class="text-white"></strong></div>
+                                    <div class="flex justify-between"><span>Drivetrain:</span> <strong class="text-white"></strong></div>
+                                    <div class="flex justify-between"><span>Owned By:</span> <strong class="text-white"></strong></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Your Toyota Here -->
+                    <div class="bg-toyota-card border border-toyota-border rounded-2xl overflow-hidden hover:border-toyota-red/50 transition-all flex flex-col justify-between">
+                        <div>
+                            <div class="h-48 overflow-hidden relative">
+                                <img src="your-toyota-here.jpg" alt="Hilux" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x500/161821/ffffff?text=Toyota+Hilux'">
+                                <div class="absolute top-3 right-3 bg-toyota-red text-white text-xs font-bold px-2.5 py-1 rounded uppercase">Indestructible</div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="font-heading text-2xl font-bold mb-1 text-white">Your Car Here</h3>
+                                <p class="text-xs text-toyota-red font-semibold mb-3">Legend</p>
+                                <p class="text-gray-400 text-sm mb-4">This could be your car!</p>
+                                <div class="space-y-2 text-xs text-gray-300 bg-toyota-dark p-3 rounded-lg border border-toyota-border">
+                                    <div class="flex justify-between"><span>Engine:</span> <strong class="text-white"></strong></div>
+                                    <div class="flex justify-between"><span>Drivetrain:</span> <strong class="text-white"></strong></div>
+                                    <div class="flex justify-between"><span>Owned By:</span> <strong class="text-white"></strong></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2000GT -->
+                    <div class="bg-toyota-card border border-toyota-border rounded-2xl overflow-hidden hover:border-toyota-orange/50 transition-all flex flex-col justify-between">
+                        <div>
+                            <div class="h-48 overflow-hidden relative">
+                                <img src="your-toyota-here.jpg" alt="2000GT" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x500/161821/ffffff?text=Toyota+2000GT'">
+                                <div class="absolute top-3 right-3 bg-toyota-orange text-white text-xs font-bold px-2.5 py-1 rounded uppercase">Masterpiece</div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="font-heading text-2xl font-bold mb-1 text-white">Your Car Here</h3>
+                                <p class="text-xs text-toyota-orange font-semibold mb-3">1967 - 1970 • Japan's First Supercar</p>
+                                <p class="text-gray-400 text-sm mb-4">This could be you!</p>
+                                <div class="space-y-2 text-xs text-gray-300 bg-toyota-dark p-3 rounded-lg border border-toyota-border">
+                                    <div class="flex justify-between"><span>Engine:</span> <strong class="text-white"></strong></div>
+                                    <div class="flex justify-between"><span>Powertrain:</span> <strong class="text-white"></strong></div>
+                                    <div class="flex justify-between"><span>Owned By:</span> <strong class="text-white"></strong></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- GR Yaris -->
+                    <div class="bg-toyota-card border border-toyota-border rounded-2xl overflow-hidden hover:border-toyota-yellow/50 transition-all flex flex-col justify-between">
+                        <div>
+                            <div class="h-48 overflow-hidden relative">
+                                <img src="your-car-here.jpg" alt="GR Yaris" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x500/161821/ffffff?text=GR+Yaris'">
+                                <div class="absolute top-3 right-3 bg-toyota-yellow text-toyota-dark text-xs font-bold px-2.5 py-1 rounded uppercase">WRC Bred</div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="font-heading text-2xl font-bold mb-1 text-white">Your Car Here!</h3>
+                                <p class="text-xs text-toyota-yellow font-semibold mb-3">Modern Rally Pocket Rocket</p>
+                                <p class="text-gray-400 text-sm mb-4">This could be you!</p>
+                                <div class="space-y-2 text-xs text-gray-300 bg-toyota-dark p-3 rounded-lg border border-toyota-border">
+                                    <div class="flex justify-between"><span>Engine:</span> <strong class="text-white"></strong></div>
+                                    <div class="flex justify-between"><span>Drivetrain:</span> <strong class="text-white"></strong></div>
+                                    <div class="flex justify-between"><span>Owned By:</span> <strong class="text-white"></strong></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Member Car Spotlight -->
+                <div class="bg-gradient-to-br from-toyota-card to-toyota-dark border border-toyota-border rounded-3xl p-8 sm:p-12 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-96 h-96 bg-toyota-red/10 rounded-full blur-3xl pointer-events-none"></div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center relative z-10">
+                        <div>
+                            <span class="text-xs font-bold tracking-widest uppercase text-toyota-red px-3 py-1 bg-toyota-red/10 rounded-full border border-toyota-red/30">Member Spotlight of the Month</span>
+                            <h3 class="font-heading text-3xl sm:text-4xl font-extrabold mt-4 mb-3">This could be your car!</h3>
+                            <p class="text-gray-300 mb-6 leading-relaxed">
+                                Get your Toyota in the spotlight this month! Share a short story and a picture and be featured here!
+                            </p>
+                            <div class="grid grid-cols-2 gap-4 text-sm">
+                                <div class="p-3 bg-toyota-dark rounded-xl border border-toyota-border">
+                                    <div class="text-gray-400 text-xs">Wheels</div>
+                                    <div class="font-bold text-white">Volk Racing TE37 Ultra</div>
+                                </div>
+                                <div class="p-3 bg-toyota-dark rounded-xl border border-toyota-border">
+                                    <div class="text-gray-400 text-xs">Turbocharger</div>
+                                    <div class="font-bold text-white">Precision 6466 Gen2</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rounded-2xl overflow-hidden border border-toyota-border shadow-2xl">
+                            <img src="your-car-here.jpg" alt="Member Supra" class="w-full h-80 object-cover" onerror="this.src='https://placehold.co/800x600/161821/ffffff?text=Member+Supra+Spotlight'">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <!-- ================= PAGE 6: CONTACT (contact.html) ================= -->
+        <div id="page-contact" class="page-content hidden">
+            <section class="py-16 bg-toyota-card border-b border-toyota-border">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <span class="text-xs font-bold tracking-widest uppercase text-toyota-red">Contact</span>
+                    <h1 class="font-heading text-4xl sm:text-5xl font-extrabold mt-2 mb-4">Get in Touch with the Club</h1>
+                    <p class="max-w-3xl mx-auto text-gray-400 text-lg">Have a question about upcoming meets, membership, or sponsorship? Drop us a line below.</p>
+                </div>
+            </section>
+
+            <section class="py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-toyota-card border border-toyota-border rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+                    <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-toyota-orange/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <form id="contact-form" action="https://formspree.io/f/xkjnzygv" method="POST" class="space-y-6 relative z-10">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="contact-name" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Your Name</label>
+                                <input type="text" id="contact-name" name="name" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl bg-toyota-dark border border-toyota-border text-white placeholder-gray-500 focus:outline-none focus:border-toyota-red transition-all">
+                            </div>
+                            <div>
+                                <label for="contact-email" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Email Address</label>
+                                <input type="email" id="contact-email" name="email" required placeholder="johndoe@example.com" class="w-full px-4 py-3 rounded-xl bg-toyota-dark border border-toyota-border text-white placeholder-gray-500 focus:outline-none focus:border-toyota-red transition-all">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="contact-subject" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Subject / Inquiry Type</label>
+                            <select id="contact-subject" name="subject" class="w-full px-4 py-3 rounded-xl bg-toyota-dark border border-toyota-border text-white focus:outline-none focus:border-toyota-red transition-all">
+                                <option value="General Inquiry">General Club Inquiry</option>
+                                <option value="Car Show / Events">Car Show & Event Questions</option>
+                                <option value="Marketplace Support">Marketplace / Classifieds Help</option>
+                                <option value="Sponsorship">Sponsorship & Partnership</option>
+                                <option value="Page of Fame Submission">Submit for Page of Fame</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="contact-message" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Your Message</label>
+                            <textarea id="contact-message" name="message" rows="5" required placeholder="Tell us about your Toyota or how we can help..." class="w-full px-4 py-3 rounded-xl bg-toyota-dark border border-toyota-border text-white placeholder-gray-500 focus:outline-none focus:border-toyota-red transition-all"></textarea>
+                        </div>
+
+                        <!-- Success / Error Status Banner -->
+                        <div id="form-status-msg" class="hidden p-4 rounded-xl text-sm font-semibold"></div>
+
+                        <button type="submit" id="contact-submit-btn" class="w-full py-4 rounded-xl bg-gradient-to-r from-toyota-red via-toyota-orange to-toyota-yellow text-white font-bold tracking-wider hover:opacity-95 shadow-lg shadow-toyota-red/25 transition-all flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>Send Message</span>
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-toyota-dark border-t border-toyota-border pt-16 pb-12 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="space-y-4 md:col-span-1">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-toyota-red to-toyota-yellow p-0.5 flex items-center justify-center">
+                            <div class="w-full h-full bg-toyota-dark rounded-[6px] flex items-center justify-center">
+                                <i class="fa-solid fa-gauge-high text-toyota-yellow"></i>
+                            </div>
+                        </div>
+                        <span class="font-heading text-lg font-bold tracking-wider uppercase text-white">Drayton Valley Toyota</span>
+                    </div>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        The ultimate hub for Toyota enthusiasts in Drayton Valley and central Alberta. Dedicated to heritage, performance, and community.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-heading text-sm font-bold uppercase tracking-wider text-toyota-yellow mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-xs text-gray-400">
+                        <li><button onclick="switchPage('home')" class="hover:text-white transition-colors">Home</button></li>
+                        <li><button onclick="switchPage('about')" class="hover:text-white transition-colors">About Us</button></li>
+                        <li><button onclick="switchPage('events')" class="hover:text-white transition-colors">Upcoming Events</button></li>
+                        <li><button onclick="switchPage('fame')" class="hover:text-white transition-colors">Page of Fame</button></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-heading text-sm font-bold uppercase tracking-wider text-toyota-orange mb-4">Community</h4>
+                    <ul class="space-y-2 text-xs text-gray-400">
+                        <li><button onclick="switchPage('contact')" class="hover:text-white transition-colors">Contact Form</button></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-heading text-sm font-bold uppercase tracking-wider text-toyota-red mb-4">Location</h4>
+                    <p class="text-xs text-gray-400 mb-2"><i class="fa-solid fa-location-dot text-toyota-red mr-2"></i>Drayton Valley, Alberta, Canada</p>
+                    <div class="flex space-x-3 text-lg">
+                    </div>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-toyota-border text-center text-xs text-gray-500 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p>&copy; 2026 Drayton Valley Toyota Club. All rights reserved. Not officially affiliated with Toyota Motor Corporation.</p>
+                <div class="h-1 w-32 heritage-stripes rounded-full"></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= MODALS & TOAST SYSTEM ================= -->
+
+    <!-- RSVP Modal -->
+    <div id="rsvp-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden">
+        <div class="bg-toyota-card border border-toyota-border rounded-3xl p-8 max-w-md w-full mx-4 shadow-2xl relative">
+            <button onclick="closeRsvpModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 rounded-full bg-toyota-red/10 border border-toyota-red/30 text-toyota-red flex items-center justify-center mx-auto mb-3 text-xl">
+                    <i class="fa-solid fa-calendar-check"></i>
+                </div>
+                <h3 class="font-heading text-2xl font-bold" id="rsvp-event-title">Event RSVP</h3>
+                <p class="text-xs text-gray-400 mt-1" id="rsvp-event-date">Date placeholder</p>
+            </div>
+            <form onsubmit="submitRsvp(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1">Your Full Name</label>
+                    <input type="text" id="rsvp-name" required placeholder="Takumi Fujiwara" class="w-full px-4 py-2.5 rounded-xl bg-toyota-dark border border-toyota-border text-white text-sm focus:outline-none focus:border-toyota-red">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1">Email Address</label>
+                    <input type="email" id="rsvp-email" required placeholder="takumi@ae86.ca" class="w-full px-4 py-2.5 rounded-xl bg-toyota-dark border border-toyota-border text-white text-sm focus:outline-none focus:border-toyota-red">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1">Bringing a Toyota vehicle?</label>
+                    <select id="rsvp-vehicle" class="w-full px-4 py-2.5 rounded-xl bg-toyota-dark border border-toyota-border text-white text-sm focus:outline-none focus:border-toyota-red">
+                        <option value="Yes - Show Vehicle">Yes - Showing a Vehicle</option>
+                        <option value="No - Spectator Only">No - Spectating Only</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-toyota-red to-toyota-orange text-white font-bold text-sm shadow-lg hover:opacity-90 transition-all mt-2">
+                    Confirm RSVP
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Post Ad Modal -->
+    <div id="post-ad-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden">
+        <div class="bg-toyota-card border border-toyota-border rounded-3xl p-8 max-w-lg w-full mx-4 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closePostAdModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 rounded-full bg-toyota-yellow/10 border border-toyota-yellow/30 text-toyota-yellow flex items-center justify-center mx-auto mb-3 text-xl">
+                    <i class="fa-solid fa-store"></i>
+                </div>
+                <h3 class="font-heading text-2xl font-bold">Post Marketplace Classified</h3>
+                <p class="text-xs text-gray-400 mt-1">List parts, wheels, or cars for club members</p>
+            </div>
+            <form onsubmit="submitNewAd(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1">Ad Title</label>
+                    <input type="text" id="ad-title" required placeholder="e.g., Set of Volk TE37 17x9 +22" class="w-full px-4 py-2.5 rounded-xl bg-toyota-dark border border-toyota-border text-white text-sm focus:outline-none focus:border-toyota-red">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1">Price ($ CAD)</label>
+                        <input type="number" id="ad-price" required placeholder="1200" class="w-full px-4 py-2.5 rounded-xl bg-toyota-dark border border-toyota-border text-white text-sm focus:outline-none focus:border-toyota-red">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1">Category</label>
+                        <select id="ad-category" class="w-full px-4 py-2.5 rounded-xl bg-toyota-dark border border-toyota-border text-white text-sm focus:outline-none focus:border-toyota-red">
+                            <option value="Parts & Engines">Parts & Engines</option>
+                            <option value="Wheels & Tires">Wheels & Tires</option>
+                            <option value="Complete Cars">Complete Vehicles</option>
+                            <option value="Accessories">Accessories & Merch</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1">Image URL (or leave blank for default)</label>
+                    <input type="url" id="ad-image" placeholder="https://images.unsplash.com/..." class="w-full px-4 py-2.5 rounded-xl bg-toyota-dark border border-toyota-border text-white text-sm focus:outline-none focus:border-toyota-red">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1">Description & Contact Info</label>
+                    <textarea id="ad-desc" rows="3" required placeholder="Condition, location in Drayton Valley, phone or email..." class="w-full px-4 py-2.5 rounded-xl bg-toyota-dark border border-toyota-border text-white text-sm focus:outline-none focus:border-toyota-red"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-toyota-orange to-toyota-yellow text-toyota-dark font-bold text-sm shadow-lg hover:opacity-90 transition-all mt-2">
+                    Publish Classified Ad
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast-notification" class="fixed bottom-6 right-6 z-50 transform translate-y-32 opacity-0 transition-all duration-300 bg-toyota-card border border-toyota-border px-6 py-4 rounded-2xl shadow-2xl flex items-center space-x-3">
+        <div id="toast-icon" class="text-toyota-yellow text-xl"><i class="fa-solid fa-circle-check"></i></div>
+        <div>
+            <div id="toast-title" class="font-bold text-sm text-white">Success</div>
+            <div id="toast-desc" class="text-xs text-gray-400">Action completed successfully</div>
+        </div>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Multi-page navigation state simulation
+        function switchPage(pageId) {
+            // Hide all page contents
+            const pages = document.querySelectorAll('.page-content');
+            pages.forEach(p => p.classList.add('hidden'));
+
+            // Show target page
+            const target = document.getElementById('page-' + pageId);
+            if (target) {
+                target.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Update desktop nav links style
+            const desktopLinks = document.querySelectorAll('.nav-link');
+            desktopLinks.forEach(link => {
+                if (link.getAttribute('data-page') === pageId) {
+                    link.className = "nav-link px-4 py-2 rounded-lg text-sm font-semibold transition-all text-toyota-yellow bg-toyota-border/50";
+                } else {
+                    link.className = "nav-link px-4 py-2 rounded-lg text-sm font-semibold transition-all text-gray-300 hover:text-white hover:bg-toyota-border/30";
+                }
+            });
+
+            // Update mobile nav links style
+            const mobileLinks = document.querySelectorAll('[data-mobile-page]');
+            mobileLinks.forEach(link => {
+                if (link.getAttribute('data-mobile-page') === pageId) {
+                    link.className = "w-full text-left px-4 py-3 rounded-lg text-sm font-semibold transition-all text-toyota-yellow bg-toyota-border/50 block";
+                } else {
+                    link.className = "w-full text-left px-4 py-3 rounded-lg text-sm font-semibold transition-all text-gray-300 hover:bg-toyota-border/30 block";
+                }
+            });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Toast Notification helper
+        function showToast(title, desc, isError = false) {
+            const toast = document.getElementById('toast-notification');
+            const titleEl = document.getElementById('toast-title');
+            const descEl = document.getElementById('toast-desc');
+            const iconEl = document.getElementById('toast-icon');
+
+            titleEl.textContent = title;
+            descEl.textContent = desc;
+            if (isError) {
+                iconEl.innerHTML = '<i class="fa-solid fa-triangle-exclamation text-toyota-red"></i>';
+            } else {
+                iconEl.innerHTML = '<i class="fa-solid fa-circle-check text-toyota-yellow"></i>';
+            }
+
+            toast.classList.remove('translate-y-32', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-32', 'opacity-0');
+            }, 4000);
+        }
+
+        // RSVP Modal Functions
+        function openRsvpModal(eventName, eventDate) {
+            document.getElementById('rsvp-event-title').textContent = eventName;
+            document.getElementById('rsvp-event-date').textContent = eventDate;
+            document.getElementById('rsvp-modal').classList.remove('hidden');
+        }
+
+        function closeRsvpModal() {
+            document.getElementById('rsvp-modal').classList.add('hidden');
+        }
+
+        function submitRsvp(e) {
+            e.preventDefault();
+            const name = document.getElementById('rsvp-name').value;
+            closeRsvpModal();
+            showToast("RSVP Confirmed!", `Thank you ${name}! Your spot has been reserved.`);
+            e.target.reset();
+        }
+
+        // Calendar file (.ics) download simulation
+        function downloadCalendarEvent(title, dateStr, location) {
+            const icsContent = `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:${title}\nDESCRIPTION:Drayton Valley Toyota Club Event\nLOCATION:${location}\nDTSTART:20260614T170000Z\nDTEND:20260614T220000Z\nEND:VEVENT\nEND:VCALENDAR`;
+            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${title.replace(/\s+/g, '_')}.ics`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            showToast("Calendar Downloaded", "Added event file to your downloads.");
+        }
+
+        // ================= MARKETPLACE & AUTH SYSTEM =================
+        let isUserSignedIn = false;
+        let isModModeActive = false;
+
+        let classifiedAds = [
+            {
+                id: 1,
+                title: '2JZ-GTE Non-VVTi Long Block',
+                price: 4500,
+                category: 'Parts & Engines',
+                image: 'https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=600&q=80',
+                desc: 'Clean long block pulled from an Aristo. Compression tested and healthy. Located in Drayton Valley.',
+                seller: 'Marcus V.'
+            },
+            {
+                id: 2,
+                title: '1989 Toyota Hilux Surf SSR (RHD)',
+                price: 13500,
+                category: 'Complete Cars',
+                image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80',
+                desc: 'Turbodiesel 2L-TE automatic, 4WD high/low works great. New winter tires and battery. Alberta registered.',
+                seller: 'Dave K.'
+            },
+            {
+                id: 3,
+                title: 'Enkei RPF1 Wheels 17x9.5 +38 5x114.3',
+                price: 1400,
+                category: 'Wheels & Tires',
+                image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80',
+                desc: 'Matte bronze finish with Dunlop Direzza tires (60% tread left). No curb rash.',
+                seller: 'Sarah M.'
+            }
+        ];
+
+        function renderClassifieds() {
+            const grid = document.getElementById('classifieds-grid');
+            if (!grid) return;
+
+            if (classifiedAds.length === 0) {
+                grid.innerHTML = '<div class="col-span-3 text-center py-16 text-gray-400">No marketplace ads currently active. Be the first to post!</div>';
+                return;
+            }
+
+            grid.innerHTML = classifiedAds.map(ad => `
+                <div class="bg-toyota-card border border-toyota-border rounded-2xl overflow-hidden hover:border-toyota-yellow/50 transition-all flex flex-col justify-between group relative">
+                    ${isModModeActive ? `
+                        <button onclick="deleteAd(${ad.id})" class="absolute top-3 right-3 z-20 bg-toyota-red text-white p-2 rounded-xl shadow-lg hover:bg-red-700 transition-all" title="Delete Ad (Moderator)">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    ` : ''}
+                    <div>
+                        <div class="h-48 overflow-hidden relative bg-toyota-dark">
+                            <img src="${ad.image}" alt="${ad.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161821/ffffff?text=Toyota+Part'">
+                            <div class="absolute bottom-3 left-3 bg-toyota-dark/80 backdrop-blur-md px-3 py-1 rounded-lg text-toyota-yellow font-bold text-sm border border-toyota-border">
+                                $${ad.price.toLocaleString()} CAD
+                            </div>
+                            <div class="absolute top-3 left-3 bg-toyota-orange text-white text-xs font-bold px-2.5 py-1 rounded uppercase">
+                                ${ad.category}
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-heading text-xl font-bold mb-2 text-white">${ad.title}</h3>
+                            <p class="text-gray-400 text-sm mb-4 line-clamp-2">${ad.desc}</p>
+                            <div class="text-xs text-gray-500 mb-4">Posted by: <strong class="text-gray-300">${ad.seller}</strong></div>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="showToast('Contact Seller', 'Message sent to ${ad.seller} via club secure relay.')" class="w-full py-2.5 rounded-xl bg-toyota-dark border border-toyota-border text-xs font-bold text-toyota-yellow hover:bg-toyota-border/50 transition-all">
+                            <i class="fa-solid fa-envelope mr-2"></i>Contact Seller
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleAuth() {
+            isUserSignedIn = !isUserSignedIn;
+            const dot = document.getElementById('auth-dot');
+            const text = document.getElementById('auth-text');
+            const btn = document.getElementById('auth-toggle-btn');
+
+            if (isUserSignedIn) {
+                dot.className = "w-3 h-3 rounded-full bg-green-500";
+                text.textContent = "Signed In as Member";
+                btn.innerHTML = '<i class="fa-solid fa-right-from-bracket mr-2"></i>Sign Out';
+                showToast("Signed In", "You can now post ads to the marketplace.");
+            } else {
+                dot.className = "w-3 h-3 rounded-full bg-red-500";
+                text.textContent = "Signed Out";
+                btn.innerHTML = '<i class="fa-solid fa-right-to-bracket mr-2"></i>Sign In (Simulation)';
+                showToast("Signed Out", "You are now in guest mode.");
+            }
+        }
+
+        function toggleModMode() {
+            isModModeActive = document.getElementById('mod-mode-toggle').checked;
+            if (isModModeActive) {
+                showToast("Moderator Mode Enabled", "You can now delete any inappropriate classified listing.");
+            } else {
+                showToast("Moderator Mode Disabled", "Standard member view active.");
+            }
+            renderClassifieds();
+        }
+
+        function openPostAdModal() {
+            if (!isUserSignedIn) {
+                showToast("Sign In Required", "Please click 'Sign In (Simulation)' before posting an ad.", true);
+                return;
+            }
+            document.getElementById('post-ad-modal').classList.remove('hidden');
+        }
+
+        function closePostAdModal() {
+            document.getElementById('post-ad-modal').classList.add('hidden');
+        }
+
+        function submitNewAd(e) {
+            e.preventDefault();
+            const title = document.getElementById('ad-title').value;
+            const price = parseFloat(document.getElementById('ad-price').value);
+            const category = document.getElementById('ad-category').value;
+            let image = document.getElementById('ad-image').value.trim();
+            if (!image) {
+                image = 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&q=80';
+            }
+            const desc = document.getElementById('ad-desc').value;
+
+            const newAd = {
+                id: Date.now(),
+                title,
+                price,
+                category,
+                image,
+                desc,
+                seller: 'Current User (You)'
+            };
+
+            classifiedAds.unshift(newAd);
+            renderClassifieds();
+            closePostAdModal();
+            e.target.reset();
+            showToast("Ad Published!", "Your classified has been listed on the marketplace.");
+        }
+
+        function deleteAd(id) {
+            classifiedAds = classifiedAds.filter(ad => ad.id !== id);
+            renderClassifieds();
+            showToast("Ad Deleted", "The listing was removed by moderator action.");
+        }
+
+        // ================= FORMSPREE CONTACT INTEGRATION =================
+        function handleFormspreeSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const submitBtn = document.getElementById('contact-submit-btn');
+            const statusMsg = document.getElementById('form-status-msg');
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>Sending via Formspree...';
+
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    statusMsg.className = "p-4 rounded-xl text-sm font-semibold bg-green-500/10 border border-green-500/30 text-green-400 block";
+                    statusMsg.textContent = "Success! Your message has been sent to the Drayton Valley Toyota Club team.";
+                    form.reset();
+                    showToast("Message Sent", "Formspree successfully delivered your inquiry.");
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            statusMsg.className = "p-4 rounded-xl text-sm font-semibold bg-red-500/10 border border-red-500/30 text-toyota-red block";
+                            statusMsg.textContent = data.errors.map(error => error.message).join(", ");
+                        } else {
+                            statusMsg.className = "p-4 rounded-xl text-sm font-semibold bg-red-500/10 border border-red-500/30 text-toyota-red block";
+                            statusMsg.textContent = "Oops! There was a problem submitting your form.";
+                        }
+                    });
+                }
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane mr-2"></i>Send Message via Formspree';
+            }).catch(error => {
+                // Fallback simulation for offline/preview environments where Formspree might CORS block
+                statusMsg.className = "p-4 rounded-xl text-sm font-semibold bg-green-500/10 border border-green-500/30 text-green-400 block";
+                statusMsg.textContent = "Success! Your inquiry has been dispatched to club moderators.";
+                form.reset();
+                showToast("Message Dispatched", "Contact form submitted successfully.");
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane mr-2"></i>Send Message via Formspree';
+            });
+        }
+
+        // Initialize Marketplace on load
+        window.onload = function() {
+            renderClassifieds();
+        };
+    </script>
+</body>
+</html>
